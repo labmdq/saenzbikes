@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Saenz Bikes: bicicletas Specialized, componentes premium y asesoramiento personalizado en Mar del Plata.">
+  <title>Saenz Bikes</title>
+  <style>
+:root{
+  --bg:#080808;
+  --panel:#111;
+  --panel-2:#171717;
+  --text:#f7f7f7;
+  --muted:#a8a8a8;
+  --line:rgba(255,255,255,.12);
+  --red:#e10600;
+  --red-soft:#ff3b30;
+  --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+button,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.site-header{
+  position:fixed;z-index:50;top:0;left:0;right:0;height:72px;
+  padding:0 max(22px,calc((100vw - var(--max))/2));
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,8,.76);backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.brand{display:flex;gap:6px;font-size:20px;letter-spacing:-.05em;font-weight:900}
+.brand b{color:var(--red)}
+.desktop-nav{display:flex;align-items:center;gap:30px;font-size:14px;font-weight:700}
+.desktop-nav a{color:#d5d5d5}
+.nav-cta,.primary-button{
+  border:0;background:var(--red);color:white;border-radius:999px;
+  padding:14px 21px;font-weight:800;transition:.22s ease
+}
+.nav-cta{padding:11px 17px}
+.primary-button:hover,.nav-cta:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.secondary-button,.ghost-button{
+  border:1px solid var(--line);background:transparent;color:white;
+  border-radius:999px;padding:13px 20px;font-weight:800
+}
+.menu-button{display:none;border:0;background:transparent;color:white;font-size:26px}
+.mobile-menu{display:none}
+main{overflow:hidden}
+.hero{
+  min-height:760px;max-width:var(--max);margin:auto;padding:150px 24px 80px;
+  display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:60px
+}
+.eyebrow{color:#ff4b43;font-size:12px;font-weight:900;letter-spacing:.15em;margin:0 0 16px}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(52px,7vw,92px);line-height:.92;letter-spacing:-.07em;margin-bottom:25px;max-width:760px}
+h2{font-size:clamp(38px,5vw,68px);line-height:.98;letter-spacing:-.055em;margin-bottom:22px}
+.hero-text,.feature-copy>p,.service-card>p,.assistant-banner p{
+  font-size:18px;line-height:1.55;color:var(--muted);max-width:680px
+}
+.hero-actions{display:flex;gap:12px;margin:30px 0}
+.trust-row{display:flex;flex-wrap:wrap;gap:18px;color:#c6c6c6;font-size:13px}
+.trust-row span:before{content:"✓";color:var(--red);margin-right:7px;font-weight:900}
+.hero-visual{position:relative;min-height:520px}
+.bike-stage{
+  position:absolute;inset:40px 0 20px;border-radius:44px;
+  background:radial-gradient(circle at 50% 45%,#2b2b2b 0,#171717 45%,#0e0e0e 78%);
+  overflow:hidden;border:1px solid rgba(255,255,255,.08)
+}
+.wheel{
+  position:absolute;width:190px;height:190px;border:9px solid #d7d7d7;border-radius:50%;
+  bottom:72px;box-shadow:0 0 0 3px #252525 inset
+}
+.wheel:after{content:"";position:absolute;inset:50%;width:10px;height:10px;background:var(--red);border-radius:50%;transform:translate(-50%,-50%)}
+.wheel-left{left:55px}.wheel-right{right:55px}
+.frame-line{position:absolute;height:13px;background:linear-gradient(90deg,#f2f2f2,#757575);border-radius:20px;transform-origin:left center}
+.frame-main{width:210px;left:165px;top:270px;transform:rotate(-28deg)}
+.frame-top{width:175px;left:190px;top:190px;transform:rotate(5deg)}
+.frame-seat{width:118px;left:196px;top:198px;transform:rotate(78deg)}
+.fork{width:145px;right:125px;top:205px;transform:rotate(67deg)}
+.bike-glow{position:absolute;width:260px;height:260px;background:rgba(225,6,0,.23);filter:blur(80px);right:50px;top:70px}
+.floating-card{
+  position:absolute;background:rgba(255,255,255,.08);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:15px 17px;
+  max-width:210px;box-shadow:0 18px 45px rgba(0,0,0,.3)
+}
+.floating-card small{display:block;color:#ff5f59;font-size:10px;font-weight:900;letter-spacing:.13em;margin-bottom:6px}
+.floating-card strong{font-size:14px;line-height:1.35}
+.card-one{left:-18px;top:55px}.card-two{right:-15px;bottom:35px}
+.section{max-width:var(--max);margin:auto;padding:110px 24px}
+.section-heading{max-width:790px;margin-bottom:48px}
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.category-card{
+  min-height:340px;padding:24px;border-radius:28px;background:linear-gradient(160deg,#1a1a1a,#0f0f0f);
+  border:1px solid var(--line);display:flex;flex-direction:column;transition:.25s
+}
+.category-card:hover{transform:translateY(-7px);border-color:rgba(255,255,255,.24)}
+.category-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:var(--red);font-size:24px;margin-bottom:auto}
+.category-card p{font-size:12px;letter-spacing:.14em;font-weight:900;color:#ff5a52;margin:24px 0 12px}
+.category-card h3{font-size:27px;line-height:1.05;letter-spacing:-.04em}
+.category-card button{margin-top:auto;border:0;background:none;color:white;text-align:left;padding:0;font-weight:800}
+.feature-section{
+  max-width:var(--max);margin:70px auto;padding:95px 24px;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:80px
+}
+.feature-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.feature-list span{border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-weight:800}
+.component-visual{
+  min-height:520px;border-radius:36px;background:radial-gradient(circle,#252525,#111 70%);
+  display:grid;place-items:center;border:1px solid var(--line);position:relative;overflow:hidden
+}
+.component-ring{width:280px;height:280px;border:35px dotted #d5d5d5;border-radius:50%;animation:spin 22s linear infinite}
+.component-core{position:absolute;width:120px;height:120px;border-radius:50%;display:grid;place-items:center;background:var(--red);font-weight:950;font-size:32px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.service-section{max-width:var(--max);margin:auto;padding:60px 24px 110px}
+.service-card{
+  min-height:470px;padding:60px;border-radius:38px;
+  background:
+    linear-gradient(90deg,rgba(5,5,5,.94),rgba(5,5,5,.46)),
+    radial-gradient(circle at 80% 45%,#8c0d09,#171717 48%,#0c0c0c 75%);
+  border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center
+}
+.primary-button.inline{display:inline-block;width:max-content;margin-top:12px}
+.assistant-banner{
+  max-width:var(--max);margin:0 auto 110px;padding:54px;
+  border-radius:34px;background:#f2f2f2;color:#0a0a0a;
+  display:flex;align-items:center;justify-content:space-between;gap:30px
+}
+.assistant-banner .eyebrow{color:var(--red)}
+.assistant-banner p{color:#666}
+footer{
+  max-width:var(--max);margin:auto;padding:36px 24px 110px;border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:26px;color:#9f9f9f
+}
+footer p{margin:0}.footer-brand{margin-right:auto;color:white}
+.floating-assistant{
+  position:fixed;right:20px;bottom:20px;z-index:40;border:0;background:white;color:#0a0a0a;
+  border-radius:999px;padding:14px 17px;font-weight:900;box-shadow:0 12px 35px rgba(0,0,0,.45)
+}
+.assistant-modal{position:fixed;inset:0;z-index:100;display:none}
+.assistant-modal.open{display:block}
+.assistant-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(12px)}
+.assistant-panel{
+  position:absolute;right:0;top:0;height:100%;width:min(720px,100%);
+  overflow-y:auto;background:#101010;padding:40px 34px 55px;border-left:1px solid var(--line)
+}
+.close-assistant{position:absolute;right:24px;top:20px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#191919;color:white;font-size:27px}
+.assistant-top{display:flex;justify-content:space-between;gap:20px;padding-right:50px}
+.assistant-top h2,.assistant-result h2{font-size:42px}
+#stepCounter{color:#888;font-weight:900}
+.progress-track{height:7px;background:#252525;border-radius:999px;overflow:hidden;margin:28px 0 42px}
+.progress-track>div{height:100%;width:20%;background:var(--red);transition:.25s}
+#questionTitle{font-size:31px;letter-spacing:-.04em;margin-bottom:8px}
+.question-help{color:var(--muted);margin-bottom:22px}
+.answer-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.answer-option{
+  padding:19px;border:1px solid var(--line);background:#171717;border-radius:18px;color:white;text-align:left
+}
+.answer-option.selected{border-color:var(--red);box-shadow:0 0 0 2px rgba(225,6,0,.16)}
+.answer-option strong{display:block;font-size:17px;margin-bottom:5px}
+.answer-option span{display:block;color:#999;font-size:13px;line-height:1.35}
+.assistant-actions{display:flex;gap:12px;margin-top:26px}
+.assistant-actions .primary-button{flex:1}
+button:disabled{opacity:.35;cursor:not-allowed;transform:none!important}
+.hidden{display:none!important}
+.assistant-result{padding-top:45px}
+.assistant-result>p{color:var(--muted);line-height:1.5}
+.result-points{display:grid;gap:10px;margin:25px 0}
+.result-points div{background:#191919;border:1px solid var(--line);padding:15px;border-radius:15px;font-weight:800}
+.comparison-box{padding:18px;border-radius:18px;background:#171717;border:1px solid var(--line);margin:18px 0 26px;color:#cfcfcf}
+.full{display:block;width:100%;text-align:center;margin-top:11px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){
+  .desktop-nav{display:none}.menu-button{display:block}
+  .mobile-menu{
+    position:fixed;z-index:49;top:72px;left:0;right:0;padding:22px;background:#0d0d0d;
+    border-bottom:1px solid var(--line);flex-direction:column;gap:20px
+  }
+  .mobile-menu.open{display:flex}
+  .mobile-menu button{border:0;background:var(--red);color:white;border-radius:999px;padding:13px;font-weight:800}
+  .hero{grid-template-columns:1fr;padding-top:130px}.hero-visual{min-height:500px}
+  .category-grid{grid-template-columns:1fr 1fr}
+  .feature-section{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .hero{padding-left:18px;padding-right:18px;gap:20px;min-height:auto}
+  h1{font-size:53px}
+  .hero-actions{flex-direction:column}.hero-actions a,.hero-actions button{text-align:center;width:100%}
+  .hero-visual{min-height:390px}.bike-stage{inset:18px 0}.wheel{width:132px;height:132px;bottom:65px}
+  .wheel-left{left:24px}.wheel-right{right:24px}
+  .frame-main{left:115px;top:220px;width:150px}.frame-top{left:130px;top:165px;width:120px}
+  .frame-seat{left:138px;top:170px;width:85px}.fork{right:90px;top:170px;width:105px}
+  .card-one{left:8px;top:18px}.card-two{right:8px;bottom:5px}
+  .section,.feature-section,.service-section{padding-left:18px;padding-right:18px}
+  .category-grid{grid-template-columns:1fr}
+  .category-card{min-height:275px}
+  .component-visual{min-height:390px}.component-ring{width:210px;height:210px;border-width:28px}
+  .service-card{padding:34px 25px;min-height:430px}
+  .assistant-banner{margin:0 18px 90px;padding:31px 24px;align-items:flex-start;flex-direction:column}
+  footer{flex-wrap:wrap;padding-bottom:100px}.footer-brand{width:100%}
+  .floating-assistant{left:18px;right:18px;text-align:center}
+  .assistant-panel{padding:75px 18px 35px}
+  .assistant-top h2,.assistant-result h2{font-size:35px}
+  .answer-grid{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Saenz Bikes">
+      <span>SAENZ</span><b>BIKES</b>
+    </a>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="#bicicletas">Bicicletas</a>
+      <a href="#componentes">Componentes</a>
+      <a href="#service">Service</a>
+      <button class="nav-cta" data-open-assistant>Elegir mi bici</button>
+    </nav>
+    <button class="menu-button" id="menuButton" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#bicicletas">Bicicletas</a>
+    <a href="#componentes">Componentes</a>
+    <a href="#service">Service</a>
+    <button data-open-assistant>Elegir mi bici</button>
+  </div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">SPECIALIZED · SRAM · ROCKSHOX · SHIMANO</p>
+        <h1>Tu próxima bicicleta empieza con una buena elección.</h1>
+        <p class="hero-text">Tecnología, rendimiento y asesoramiento real para encontrar la bicicleta adecuada para vos.</p>
+        <div class="hero-actions">
+          <button class="primary-button" data-open-assistant>Encontrá tu bicicleta</button>
+          <a class="secondary-button" href="#bicicletas">Ver categorías</a>
+        </div>
+        <div class="trust-row">
+          <span>Asesoramiento personalizado</span>
+          <span>Mar del Plata</span>
+          <span>Service oficial</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="bike-stage" aria-hidden="true">
+          <div class="wheel wheel-left"></div>
+          <div class="wheel wheel-right"></div>
+          <div class="frame-line frame-main"></div>
+          <div class="frame-line frame-top"></div>
+          <div class="frame-line frame-seat"></div>
+          <div class="frame-line fork"></div>
+          <div class="bike-glow"></div>
+        </div>
+        <div class="floating-card card-one">
+          <small>RECOMENDADO</small>
+          <strong>Elegí por uso, nivel y objetivo</strong>
+        </div>
+        <div class="floating-card card-two">
+          <small>RESPUESTA RÁPIDA</small>
+          <strong>Asesoramiento por WhatsApp</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bicicletas">
+      <div class="section-heading reveal">
+        <p class="eyebrow">ENCONTRÁ TU CATEGORÍA</p>
+        <h2>Una bicicleta para cada forma de pedalear.</h2>
+      </div>
+
+      <div class="category-grid">
+        <article class="category-card reveal" data-category="mtb">
+          <div class="category-icon">↗</div>
+          <p>MTB / XC</p>
+          <h3>Velocidad y control fuera del asfalto.</h3>
+          <button data-start-category="mtb">Explorar MTB</button>
+        </article>
+
+        <article class="category-card reveal" data-category="ruta">
+          <div class="category-icon">→</div>
+          <p>RUTA</p>
+          <h3>Eficiencia, respuesta y velocidad.</h3>
+          <button data-start-category="ruta">Explorar Ruta</button>
+        </article>
+
+        <article class="category-card reveal" data-category="gravel">
+          <div class="category-icon">⌁</div>
+          <p>GRAVEL</p>
+          <h3>Libertad para combinar todos los caminos.</h3>
+          <button data-start-category="gravel">Explorar Gravel</button>
+        </article>
+
+        <article class="category-card reveal" data-category="ebike">
+          <div class="category-icon">⚡</div>
+          <p>E-BIKE</p>
+          <h3>Más alcance, desnivel y tiempo de uso.</h3>
+          <button data-start-category="ebike">Explorar E-Bike</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="feature-section" id="componentes">
+      <div class="feature-copy reveal">
+        <p class="eyebrow">COMPONENTES PREMIUM</p>
+        <h2>La bicicleta es un sistema. Cada pieza importa.</h2>
+        <p>Transmisiones, suspensiones, ruedas y componentes seleccionados para mejorar funcionamiento, peso y confiabilidad.</p>
+        <div class="feature-list">
+          <span>SRAM</span><span>RockShox</span><span>Shimano</span><span>Roval</span>
+        </div>
+      </div>
+      <div class="component-visual reveal">
+        <div class="component-ring"></div>
+        <div class="component-core">AXS</div>
+      </div>
+    </section>
+
+    <section class="service-section" id="service">
+      <div class="service-card reveal">
+        <p class="eyebrow">SAENZ BIKES SERVICE</p>
+        <h2>La misma precisión para venderla y mantenerla.</h2>
+        <p>Diagnóstico, mantenimiento preventivo y trabajos técnicos con herramientas específicas, procedimientos correctos y repuestos originales.</p>
+        <a class="primary-button inline" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20consultar%20por%20un%20service." target="_blank" rel="noopener">Consultar service</a>
+      </div>
+    </section>
+
+    <section class="assistant-banner reveal">
+      <div>
+        <p class="eyebrow">ASISTENTE DE COMPRA</p>
+        <h2>¿No sabés cuál elegir?</h2>
+        <p>Respondé cinco preguntas y recibí una recomendación orientativa.</p>
+      </div>
+      <button class="primary-button" data-open-assistant>Empezar ahora</button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand"><span>SAENZ</span><b>BIKES</b></div>
+    <p>Mar del Plata · Argentina</p>
+    <a href="https://wa.me/542235857654" target="_blank" rel="noopener">WhatsApp</a>
+  </footer>
+
+  <button class="floating-assistant" data-open-assistant aria-label="Abrir asistente">
+    <span>¿Qué bici elijo?</span>
+  </button>
+
+  <div class="assistant-modal" id="assistantModal" aria-hidden="true">
+    <div class="assistant-backdrop" data-close-assistant></div>
+    <section class="assistant-panel" role="dialog" aria-modal="true" aria-labelledby="assistantTitle">
+      <button class="close-assistant" data-close-assistant aria-label="Cerrar">×</button>
+
+      <div id="assistantQuiz">
+        <div class="assistant-top">
+          <div>
+            <p class="eyebrow">ASISTENTE SAENZ BIKES</p>
+            <h2 id="assistantTitle">Encontrá la bicicleta correcta.</h2>
+          </div>
+          <span id="stepCounter">1 / 5</span>
+        </div>
+
+        <div class="progress-track"><div id="progressBar"></div></div>
+        <h3 id="questionTitle"></h3>
+        <p class="question-help" id="questionHelp"></p>
+        <div class="answer-grid" id="answerGrid"></div>
+
+        <div class="assistant-actions">
+          <button class="ghost-button" id="backButton" type="button">Volver</button>
+          <button class="primary-button" id="nextButton" type="button" disabled>Continuar</button>
+        </div>
+      </div>
+
+      <div class="assistant-result hidden" id="assistantResult">
+        <p class="eyebrow">TU RECOMENDACIÓN</p>
+        <h2 id="resultTitle"></h2>
+        <p id="resultDescription"></p>
+        <div class="result-points" id="resultPoints"></div>
+        <div class="comparison-box" id="comparisonBox"></div>
+        <a class="primary-button full" id="whatsappResult" target="_blank" rel="noopener">Consultar disponibilidad</a>
+        <button class="ghost-button full" id="restartAssistant" type="button">Volver a empezar</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+(() => {
+  const menuButton = document.getElementById('menuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuButton?.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(open));
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.13 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+  </script>
+  <script>
+(() => {
+  const modal = document.getElementById('assistantModal');
+  const quiz = document.getElementById('assistantQuiz');
+  const result = document.getElementById('assistantResult');
+  const stepCounter = document.getElementById('stepCounter');
+  const progressBar = document.getElementById('progressBar');
+  const questionTitle = document.getElementById('questionTitle');
+  const questionHelp = document.getElementById('questionHelp');
+  const answerGrid = document.getElementById('answerGrid');
+  const backButton = document.getElementById('backButton');
+  const nextButton = document.getElementById('nextButton');
+
+  const questions = [
+    {
+      key:'uso', title:'¿Dónde la vas a usar?', help:'Elegí el uso principal.',
+      options:[
+        ['mtb','MTB / XC','Senderos, entrenamiento y competencia'],
+        ['ruta','Ruta','Velocidad y eficiencia en asfalto'],
+        ['gravel','Gravel','Asfalto, caminos rurales y aventura'],
+        ['ebike','E-Bike','Más alcance con asistencia eléctrica']
+      ]
+    },
+    {
+      key:'nivel', title:'¿Cuál es tu nivel?', help:'Esto ayuda a definir el rendimiento adecuado.',
+      options:[
+        ['inicial','Estoy empezando','Busco seguridad y facilidad'],
+        ['intermedio','Intermedio','Entreno con frecuencia'],
+        ['competitivo','Competitivo','Busco máximo rendimiento']
+      ]
+    },
+    {
+      key:'prioridad', title:'¿Qué priorizás?', help:'Elegí lo más importante para vos.',
+      options:[
+        ['comodidad','Comodidad','Posición y comportamiento amigable'],
+        ['velocidad','Velocidad','Respuesta y eficiencia'],
+        ['liviandad','Liviandad','Menor peso y aceleración'],
+        ['control','Control','Seguridad en terreno técnico']
+      ]
+    },
+    {
+      key:'presupuesto', title:'¿En qué gama estás pensando?', help:'Rangos orientativos para ajustar la recomendación.',
+      options:[
+        ['entrada','Entrada','Buena relación precio-producto'],
+        ['media','Intermedia','Mejores componentes y menor peso'],
+        ['alta','Alta gama','Tecnología y rendimiento premium']
+      ]
+    },
+    {
+      key:'objetivo', title:'¿Cómo querés usarla?', help:'Elegí el objetivo más cercano.',
+      options:[
+        ['recreativo','Salidas recreativas','Disfrutar y sumar kilómetros'],
+        ['entrenamiento','Entrenamiento','Mejorar rendimiento'],
+        ['competencia','Competencia','Buscar el máximo resultado']
+      ]
+    }
+  ];
+
+  const state = { step:0, answers:{} };
+
+  function openAssistant(category){
+    if(category) state.answers.uso = category;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    quiz.classList.remove('hidden');
+    result.classList.add('hidden');
+    render();
+  }
+
+  function closeAssistant(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  document.querySelectorAll('[data-open-assistant]').forEach(el => el.addEventListener('click', () => openAssistant()));
+  document.querySelectorAll('[data-close-assistant]').forEach(el => el.addEventListener('click', closeAssistant));
+  document.querySelectorAll('[data-start-category]').forEach(el => {
+    el.addEventListener('click', () => openAssistant(el.dataset.startCategory));
+  });
+
+  function render(){
+    const q = questions[state.step];
+    stepCounter.textContent = `${state.step + 1} / ${questions.length}`;
+    progressBar.style.width = `${((state.step + 1) / questions.length) * 100}%`;
+    questionTitle.textContent = q.title;
+    questionHelp.textContent = q.help;
+    answerGrid.innerHTML = '';
+
+    q.options.forEach(([value,label,detail]) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'answer-option' + (state.answers[q.key] === value ? ' selected' : '');
+      button.innerHTML = `<strong>${label}</strong><span>${detail}</span>`;
+      button.addEventListener('click', () => {
+        state.answers[q.key] = value;
+        render();
+      });
+      answerGrid.appendChild(button);
+    });
+
+    backButton.disabled = state.step === 0;
+    nextButton.disabled = !state.answers[q.key];
+    nextButton.textContent = state.step === questions.length - 1 ? 'Ver recomendación' : 'Continuar';
+  }
+
+  function getRecommendation(){
+    const a = state.answers;
+
+    if(a.uso === 'mtb'){
+      if(a.objetivo === 'competencia' || a.nivel === 'competitivo'){
+        if(a.presupuesto === 'alta'){
+          return {
+            title:'Specialized Epic World Cup',
+            description:'Una plataforma de XC de máxima eficiencia, pensada para quienes buscan respuesta inmediata y rendimiento competitivo.',
+            points:['Orientación XC competitivo','Alta eficiencia de pedaleo','Configuración premium'],
+            compare:'Alternativa más versátil: Specialized Epic 8.'
+          };
+        }
+        return {
+          title:'Specialized Epic 8',
+          description:'Una MTB rápida y capaz, con equilibrio entre rendimiento de XC, control y versatilidad.',
+          points:['Rápida en ascensos','Mayor control en terreno técnico','Excelente base para entrenar o competir'],
+          compare:'Alternativa más accesible: Specialized Chisel.'
+        };
+      }
+      return {
+        title:'Specialized Chisel',
+        description:'Una MTB equilibrada, liviana y confiable para progresar en senderos y entrenamientos.',
+        points:['Manejo predecible','Gran relación precio-producto','Ideal para crecer dentro del MTB'],
+        compare:'Alternativa con doble suspensión: Specialized Epic 8.'
+      };
+    }
+
+    if(a.uso === 'ruta'){
+      if(a.prioridad === 'comodidad' || a.objetivo === 'recreativo'){
+        return {
+          title:'Specialized Roubaix',
+          description:'Una bicicleta de ruta pensada para combinar velocidad, estabilidad y comodidad en distancias largas.',
+          points:['Mayor confort','Estabilidad en fondos largos','Excelente control'],
+          compare:'Alternativa más deportiva: Specialized Tarmac.'
+        };
+      }
+      return {
+        title:'Specialized Tarmac',
+        description:'Una bicicleta de ruta rápida, reactiva y eficiente para quienes priorizan rendimiento.',
+        points:['Respuesta inmediata','Eficiencia en asfalto','Plataforma competitiva'],
+        compare:'Alternativa más confortable: Specialized Roubaix.'
+      };
+    }
+
+    if(a.uso === 'gravel'){
+      return {
+        title:'Specialized Diverge',
+        description:'Una gravel versátil para combinar asfalto, caminos rurales y aventura con gran comodidad.',
+        points:['Gran versatilidad','Confort en superficies mixtas','Apta para salidas largas'],
+        compare:'Podemos ajustar la versión según terreno y presupuesto.'
+      };
+    }
+
+    return {
+      title:'Specialized Turbo Levo',
+      description:'Una E-Bike para ampliar distancia, desnivel y tiempo de uso manteniendo una conducción deportiva.',
+      points:['Asistencia eléctrica','Mayor alcance','Control en terrenos exigentes'],
+      compare:'Podemos definir autonomía y configuración según tus recorridos.'
+    };
+  }
+
+  function showResult(){
+    const recommendation = getRecommendation();
+    document.getElementById('resultTitle').textContent = recommendation.title;
+    document.getElementById('resultDescription').textContent = recommendation.description;
+    document.getElementById('resultPoints').innerHTML = recommendation.points.map(point => `<div>${point}</div>`).join('');
+    document.getElementById('comparisonBox').textContent = recommendation.compare;
+
+    const labelMap = {};
+    questions.forEach(q => q.options.forEach(([value,label]) => labelMap[value] = label));
+
+    const summary = [
+      `Uso: ${labelMap[state.answers.uso]}`,
+      `Nivel: ${labelMap[state.answers.nivel]}`,
+      `Prioridad: ${labelMap[state.answers.prioridad]}`,
+      `Gama: ${labelMap[state.answers.presupuesto]}`,
+      `Objetivo: ${labelMap[state.answers.objetivo]}`,
+      `Recomendación: ${recommendation.title}`
+    ].join('\n');
+
+    document.getElementById('whatsappResult').href =
+      'https://wa.me/542235857654?text=' +
+      encodeURIComponent('Hola Saenz Bikes, completé el asistente:\n\n' + summary + '\n\nQuiero consultar disponibilidad y alternativas.');
+
+    quiz.classList.add('hidden');
+    result.classList.remove('hidden');
+  }
+
+  nextButton.addEventListener('click', () => {
+    if(state.step < questions.length - 1){
+      state.step++;
+      render();
+    } else {
+      showResult();
+    }
+  });
+
+  backButton.addEventListener('click', () => {
+    if(state.step > 0){
+      state.step--;
+      render();
+    }
+  });
+
+  document.getElementById('restartAssistant').addEventListener('click', () => {
+    state.step = 0;
+    state.answers = {};
+    result.classList.add('hidden');
+    quiz.classList.remove('hidden');
+    render();
+  });
+
+  window.addEventListener('keydown', event => {
+    if(event.key === 'Escape' && modal.classList.contains('open')) closeAssistant();
+  });
+
+  render();
+})();
+
+  </script>
+</body>
+</html>
