@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>Saenz Bikes 2.0</title>
+<style>
+:root{--bg:#050505;--panel:#111;--text:#f7f7f7;--muted:#aaa;--line:rgba(255,255,255,.1);--red:#e10600;--max:1280px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{max-width:var(--max);margin:auto;padding:0 22px}
+header{position:fixed;z-index:50;top:0;left:0;right:0;height:72px;background:rgba(5,5,5,.75);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.06)}
+.header-in{height:100%;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:950;font-size:20px;letter-spacing:-.055em}.brand b{color:var(--red)}
+nav{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:750}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:14px 21px;background:var(--red);color:#fff;font-weight:850}
+.menu{display:none;background:none;border:0;color:white;font-size:25px}.mobile{display:none}
+.hero{min-height:100vh;padding-top:72px;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.93)),radial-gradient(circle at 72% 28%,rgba(225,6,0,.34),transparent 30%),linear-gradient(145deg,#272727,#0c0c0c 70%)}
+.hero-content{position:relative;z-index:2;padding-bottom:70px;max-width:930px}.eyebrow{color:#ff554e;font-size:12px;font-weight:900;letter-spacing:.16em;margin:0 0 16px}
+h1,h2,h3,p{margin-top:0}h1{font-size:clamp(60px,8vw,110px);line-height:.88;letter-spacing:-.075em;margin-bottom:25px}h2{font-size:clamp(42px,5.5vw,72px);line-height:.97;letter-spacing:-.055em;margin-bottom:20px}
+.lead{font-size:20px;line-height:1.5;color:#b5b5b5;max-width:720px}.actions{display:flex;gap:12px;margin-top:28px}.dark{background:#151515;border:1px solid var(--line)}
+.meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:25px;color:#c2c2c2;font-size:13px}.meta span:before{content:"✓";color:var(--red);font-weight:900;margin-right:7px}
+.bike{position:absolute;right:3%;top:15%;width:min(58vw,800px);height:64vh;opacity:.78}.wheel{position:absolute;width:38%;aspect-ratio:1;border:10px solid #d5d5d5;border-radius:50%;bottom:4%}.wl{left:0}.wr{right:0}
+.line{position:absolute;height:2.2%;background:linear-gradient(90deg,#eee,#777);border-radius:20px;transform-origin:left center}.a{width:43%;left:26%;top:55%;transform:rotate(-28deg)}.b{width:35%;left:31%;top:39%;transform:rotate(5deg)}.c{width:24%;left:32%;top:41%;transform:rotate(76deg)}.d{width:31%;right:18%;top:42%;transform:rotate(65deg)}
+.section{padding:115px 0}.head{max-width:780px;margin-bottom:48px}.stack{display:grid;gap:18px}.cat{min-height:540px;border:1px solid var(--line);border-radius:36px;padding:46px;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.82)),radial-gradient(circle at 75% 25%,rgba(225,6,0,.22),transparent 25%),linear-gradient(145deg,#242424,#0d0d0d 72%)}
+.cat:nth-child(2){background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.82)),radial-gradient(circle at 72% 25%,rgba(255,255,255,.12),transparent 25%),linear-gradient(145deg,#1c1c1c,#0b0b0b 72%)}.mark{position:absolute;right:5%;top:8%;font-size:clamp(100px,18vw,240px);font-weight:950;color:rgba(255,255,255,.055)}
+.cat-in{position:relative;z-index:2;max-width:650px}.cat h3{font-size:clamp(42px,5vw,68px);line-height:.95;letter-spacing:-.055em;margin-bottom:15px}.cat p{font-size:18px;line-height:1.5;color:#b7b7b7}
+.chooser{padding:64px;border-radius:36px;background:#f2f2f2;color:#0b0b0b;display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center}.chooser .eyebrow{color:var(--red)}.chooser p{color:#676767;font-size:18px;line-height:1.5}
+.quiz{background:#0d0d0d;color:#fff;border-radius:26px;padding:26px}.quiz h3{font-size:28px;letter-spacing:-.035em}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.choice{padding:16px;border-radius:15px;background:#171717;border:1px solid var(--line);color:white;text-align:left;font-weight:800}.choice.active{border-color:var(--red)}.result{padding:15px;border-radius:15px;background:#171717;color:#ccc;min-height:76px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.product{min-height:450px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:#101010;display:flex;flex-direction:column}.media{height:260px;background:radial-gradient(circle at 70% 30%,rgba(225,6,0,.28),transparent 24%),linear-gradient(150deg,#292929,#111 70%);position:relative}.media:after{content:"";position:absolute;left:12%;right:12%;bottom:16%;height:3px;background:rgba(255,255,255,.6);box-shadow:0 -60px 0 rgba(255,255,255,.35),0 -120px 0 rgba(255,255,255,.14)}.info{padding:24px;display:flex;flex-direction:column;flex:1}.info small{color:#ff554e;font-weight:900;letter-spacing:.13em}.info h3{font-size:29px;letter-spacing:-.04em;margin:12px 0}.info p{color:var(--muted);line-height:1.45}.info .btn{margin-top:auto}
+.service{min-height:600px;border:1px solid var(--line);border-radius:38px;padding:54px;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.9)),radial-gradient(circle at 78% 30%,rgba(225,6,0,.26),transparent 24%),linear-gradient(145deg,#242424,#0d0d0d 72%)}.service-in{position:relative;z-index:2;max-width:760px}.service p{color:#b1b1b1;font-size:18px;line-height:1.5}.badges{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}.badges span{padding:11px 15px;border:1px solid var(--line);border-radius:999px;font-weight:800}
+footer{border-top:1px solid var(--line);padding:36px 0 105px;color:#999;display:flex;gap:24px;align-items:center}.float{position:fixed;z-index:60;right:20px;bottom:20px;background:#fff;color:#0b0b0b;border-radius:999px;padding:14px 18px;font-weight:900}.reveal{opacity:0;transform:translateY(28px);transition:.75s}.visible{opacity:1;transform:none}
+@media(max-width:900px){nav{display:none}.menu{display:block}.mobile{position:fixed;z-index:49;top:72px;left:0;right:0;padding:22px;background:#0b0b0b;border-bottom:1px solid var(--line);flex-direction:column;gap:18px}.mobile.open{display:flex}.bike{width:95vw;right:-25%;opacity:.42}.chooser{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.wrap{padding:0 18px}.hero{min-height:900px}.hero-content{padding-bottom:56px}h1{font-size:58px}.lead{font-size:18px}.actions{flex-direction:column}.actions a{width:100%}.bike{width:118vw;right:-42%;top:24%;height:55vh}.section{padding:88px 0}.cat{min-height:490px;padding:28px}.chooser{padding:32px 23px}.choices{grid-template-columns:1fr}.products{grid-template-columns:1fr}.service{padding:32px 23px;min-height:540px}footer{flex-wrap:wrap}.float{left:18px;right:18px;text-align:center}}
+</style>
+</head>
+<body>
+<header><div class="wrap header-in"><a class="brand" href="#inicio">SAENZ <b>BIKES</b></a><nav><a href="#bicicletas">Bicicletas</a><a href="#elegir">Elegí tu bicicleta</a><a href="#productos">Productos</a><a href="#service">Service</a><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20hacer%20una%20consulta." target="_blank">WhatsApp</a></nav><button class="menu" id="menu">☰</button></div></header>
+<div class="mobile" id="mobile"><a href="#bicicletas">Bicicletas</a><a href="#elegir">Elegí tu bicicleta</a><a href="#productos">Productos</a><a href="#service">Service</a><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20hacer%20una%20consulta." target="_blank">WhatsApp</a></div>
+
+<main>
+<section class="hero" id="inicio">
+<div class="bike"><div class="wheel wl"></div><div class="wheel wr"></div><div class="line a"></div><div class="line b"></div><div class="line c"></div><div class="line d"></div></div>
+<div class="wrap" style="width:100%"><div class="hero-content reveal"><p class="eyebrow">VENTA · ASESORAMIENTO · SERVICE OFICIAL</p><h1>La bicicleta correcta cambia todo.</h1><p class="lead">Bicicletas Specialized, componentes premium y respaldo técnico para elegir, configurar y mantener tu bicicleta.</p><div class="actions"><a class="btn" href="#elegir">Encontrar mi bicicleta</a><a class="btn dark" href="#bicicletas">Ver bicicletas</a></div><div class="meta"><span>Mar del Plata</span><span>Service Oficial</span><span>Asesoramiento personalizado</span></div></div></div>
+</section>
+
+<section class="section wrap" id="bicicletas">
+<div class="head reveal"><p class="eyebrow">ELEGÍ POR EXPERIENCIA</p><h2>Una bicicleta para cada forma de pedalear.</h2></div>
+<div class="stack">
+<article class="cat reveal"><div class="mark">XC</div><div class="cat-in"><p class="eyebrow">MONTAÑA / XC</p><h3>Subí rápido. Bajá con control.</h3><p>Epic, Epic World Cup y Chisel para entrenamiento, senderos y competencia.</p><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20consultar%20por%20una%20bicicleta%20MTB." target="_blank">Consultar MTB</a></div></article>
+<article class="cat reveal"><div class="mark">ROAD</div><div class="cat-in"><p class="eyebrow">RUTA</p><h3>Velocidad desde el primer metro.</h3><p>Tarmac y Roubaix para rendimiento, eficiencia o comodidad en distancias largas.</p><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20consultar%20por%20una%20bicicleta%20de%20ruta." target="_blank">Consultar Ruta</a></div></article>
+<article class="cat reveal"><div class="mark">E</div><div class="cat-in"><p class="eyebrow">E-BIKE</p><h3>Más distancia. Más desnivel.</h3><p>Turbo Levo para ampliar tus recorridos sin perder una conducción deportiva.</p><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20consultar%20por%20una%20E-Bike." target="_blank">Consultar E-Bike</a></div></article>
+</div>
+</section>
+
+<section class="section wrap" id="elegir"><div class="chooser reveal"><div><p class="eyebrow">ASISTENTE DE ELECCIÓN</p><h2>¿Cuál es la bicicleta correcta para vos?</h2><p>Elegí tu uso principal y recibí una primera orientación. En la próxima etapa sumaremos nivel, objetivo, prioridad y presupuesto.</p></div><div class="quiz"><h3>¿Dónde vas a pedalear?</h3><div class="choices"><button class="choice" data-result="Para montaña y XC, compararía Chisel, Epic 8 y Epic World Cup.">Montaña / XC</button><button class="choice" data-result="Para ruta, la elección principal es entre Tarmac y Roubaix.">Ruta</button><button class="choice" data-result="Para caminos mixtos y aventura, la referencia inicial es Diverge.">Gravel</button><button class="choice" data-result="Para asistencia eléctrica, empezaría por la familia Specialized Turbo.">E-Bike</button></div><div class="result" id="result">Seleccioná una opción.</div></div></div></section>
+
+<section class="section wrap" id="productos"><div class="head reveal"><p class="eyebrow">SELECCIÓN PREMIUM</p><h2>Productos elegidos por rendimiento.</h2></div><div class="products">
+<article class="product reveal"><div class="media"></div><div class="info"><small>SRAM</small><h3>Transmisiones AXS</h3><p>Precisión electrónica para ruta, gravel y MTB.</p><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20consultar%20por%20SRAM%20AXS." target="_blank">Consultar</a></div></article>
+<article class="product reveal"><div class="media"></div><div class="info"><small>ROCKSHOX</small><h3>Suspensiones</h3><p>SID, SID SL y componentes seleccionados.</p><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20consultar%20por%20RockShox." target="_blank">Consultar</a></div></article>
+<article class="product reveal"><div class="media"></div><div class="info"><small>ROVAL</small><h3>Ruedas y componentes</h3><p>Rendimiento, menor peso y confiabilidad.</p><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20consultar%20por%20Roval." target="_blank">Consultar</a></div></article>
+</div></section>
+
+<section class="section wrap" id="service"><article class="service reveal"><div class="service-in"><p class="eyebrow">RESPALDO TÉCNICO</p><h2>Vendemos bicicletas. Y sabemos cómo mantenerlas.</h2><p>Armado profesional, configuración, diagnóstico y mantenimiento con herramientas específicas, procedimientos correctos y repuestos originales.</p><div class="badges"><span>Specialized</span><span>RockShox</span><span>SOS SRAM</span><span>Shimano Di2</span></div><a class="btn" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20reservar%20un%20service." target="_blank">Reservar service</a></div></article></section>
+</main>
+
+<footer class="wrap"><div class="brand">SAENZ <b>BIKES</b></div><span>Mar del Plata</span><a href="https://instagram.com/saenzbikes_service" target="_blank">@saenzbikes_service</a></footer>
+<a class="float" href="https://wa.me/542235857654?text=Hola%20Saenz%20Bikes,%20quiero%20hacer%20una%20consulta." target="_blank">Hablar por WhatsApp</a>
+
+<script>
+const menu=document.getElementById('menu'),mobile=document.getElementById('mobile');menu.onclick=()=>mobile.classList.toggle('open');mobile.querySelectorAll('a').forEach(a=>a.onclick=()=>mobile.classList.remove('open'));
+document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{document.querySelectorAll('.choice').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('result').textContent=b.dataset.result});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>obs.observe(e));
+</script>
+</body></html>
