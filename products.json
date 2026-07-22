@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Specialized Epic 8 EVO",
+    "category": "MTB"
+  },
+  {
+    "id": 2,
+    "name": "Specialized Epic World Cup",
+    "category": "MTB"
+  },
+  {
+    "id": 3,
+    "name": "Specialized Tarmac SL8",
+    "category": "Ruta"
+  },
+  {
+    "id": 4,
+    "name": "Specialized Crux",
+    "category": "Gravel"
+  },
+  {
+    "id": 5,
+    "name": "Specialized Turbo Levo",
+    "category": "E-Bike"
+  },
+  {
+    "id": 6,
+    "name": "Armado personalizado",
+    "category": "MTB"
+  }
+]
